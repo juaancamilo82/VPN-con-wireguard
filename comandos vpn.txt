@@ -1,13 +1,19 @@
 sudo su (desde el pc normal preferiblemente ubuntu)
 1. creamos un servidor virtual ubuntu, le creamos su clave pem.
 
-2. desde la máquina propia ingresamos al servidor 
+2.  ingresamos al servidor de la siguiente manera: 
 
 ssh -i clave.pem ubuntu@ippublica
+
+3. 
 sudo su
 instalamos el docker en el server ubuntu
-mkdir wgeasy
-nano docker-compose.yml
+4. creamos un directorio: mkdir wgeasy
+5. Luego creamos un docker compose dentro de wgeasy:  nano docker-compose.yml
+6. Dentro del docker compose ponemos la siguiente imagen, modificamos el WG_HOST Y PASSWORD, 
+
+el WG_HOST: es la ip publica de nuestro servidor que servirá para acceder con esa ip en el navegador
+PASSWORD: es la clave que pondremos nosotros mismos para acceder desde la url, puede ser cualquiera
 
 ----------
 version: '3.8'
@@ -36,10 +42,8 @@ services:
 ------
 
 
-mkdir -p wg-easy
-docker-compose up -d
-docker-compose logs
+7. Dentro de la carpeta wgeasy, creamos una nueva carpeta: mkdir -p wg-easy
+8. allí ya levantamos el docker compose: docker-compose up -d
+9. (opcional) revisamos los logs para ver que todo este ok: docker-compose logs
 
-luego vamos a la ip publica:http://ip:51821
-
-
+10. luego vamos a la ip publica:http://ip:51821
